@@ -4,6 +4,7 @@ version := "0.1"
 
 libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-http" % "10.0.11",
+  "com.wavesplatform" % "wavesj" % "0.3",
   "com.typesafe.akka" %% "akka-http-testkit" % "10.0.11" % Test
 )
 
