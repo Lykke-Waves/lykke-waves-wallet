@@ -1,4 +1,4 @@
-name := "lykke-waves"
+name := "lykke-waves-wallet"
 
 version := "0.1"
 
@@ -8,14 +8,7 @@ libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-http-testkit" % "10.0.11" % Test
 )
 
-// Enables publishing to maven repo
-publishMavenStyle := true
-
-// Do not append Scala versions to the generated artifacts
-crossPaths := false
-
-// This forbids including Scala related libraries into the dependency
-autoScalaLibrary := false
+scalaVersion := "2.12.4"
 
 // package
 enablePlugins(JavaServerAppPackaging, DebianPlugin, JDebPackaging, GitVersioning)
