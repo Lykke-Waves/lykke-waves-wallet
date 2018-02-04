@@ -9,13 +9,16 @@ import ru.tolsi.lykke.waves.wallet.routes.{SignRoute, WalletsRoute}
 object Server extends HttpApp with LykkeApiServer with App {
   private val networkType: NetworkType = NetworkType.Main
 
+  private val isAliveRoute = IsAliveRoute(ProjectInfo.NameString, ProjectInfo.VersionString,
+    sys.env.getOrElse("ENV_INFO", ""), Util.isDebug).route
+
+  private val walletsRoute = WalletsRoute(networkType).route
+
+  private val signRoute = SignRoute(networkType).route
+
   override def routes: Route = handleRejections {
     pathPrefix("api") {
-      IsAliveRoute(ProjectInfo.NameString,
-        ProjectInfo.VersionString,
-        sys.env.getOrElse("ENV_INFO", ""),
-        Util.isDebug
-      ).route ~ WalletsRoute(networkType).route ~ SignRoute(networkType).route
+      isAliveRoute ~ walletsRoute ~ signRoute
     }
   }
 
