@@ -1,7 +1,7 @@
 # lykke-waves-wallet
 Waves Wallet Module for Lykke Exchange.
 
-This module sign transactions and creates private keys/addresses for exchange needs.
+This module signs transactions and creates private keys/addresses for exchange needs.
 
 # Build
 
