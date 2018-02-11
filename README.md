@@ -20,3 +20,9 @@ Just install the .deb package and start the service.
 # Configuration
 
 For this moment there are no any configuration allowed, it will be as HTTP service at `localhost:8081`.
+
+# Todos
+
+- [ ] Make the required logging format
+- [ ] Make the routes tests
+- [ ] Clean up the code
