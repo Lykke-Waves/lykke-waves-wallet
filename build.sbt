@@ -15,7 +15,7 @@ version in ThisBuild := {
 }
 
 libraryDependencies ++= Seq(
-  "ru.tolsi" %% "lykke-waves-common" % "master-96609dea-SNAPSHOT"
+  "ru.tolsi" %% "lykke-waves-common" % "master-646499cd-SNAPSHOT"
 )
 
 sourceGenerators in Compile += Def.task {
