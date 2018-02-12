@@ -26,7 +26,7 @@ case class SignRoute(networkType: NetworkType) extends PlayJsonSupport with Netw
 
   import SignRoute._
 
-  val route: Route = path("wallets") {
+  val route: Route = path("sign") {
     post {
       entity(as[RequestObject]) { req =>
         complete {
