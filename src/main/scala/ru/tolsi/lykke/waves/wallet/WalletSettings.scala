@@ -18,7 +18,7 @@ object WalletSettings extends StrictLogging {
     contentStreamOpt.flatMap(c => Try {
       Json.parse(c).as[WalletSettings]
     }.toOption).getOrElse {
-      logger.warn("Can't read config from 'SettingsUrl', load by default")
+      logger.warn(s"Can't read config from 'SettingsUrl', load defaults: ${WalletSettings.Default}")
       WalletSettings.Default
     }
   }

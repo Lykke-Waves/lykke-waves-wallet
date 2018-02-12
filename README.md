@@ -25,7 +25,7 @@ For this moment there are no any configuration allowed, it will be as HTTP servi
 
 Due to the rather tight deadlines of the contest and lack of free time, the project will be completed a little later.
 
-- [ ] Make the required logging format
+- [x] Make the required logging format
 - [ ] Make the routes tests
 - [ ] Clean up the code
 - [x] NetworkType (testnet) support
