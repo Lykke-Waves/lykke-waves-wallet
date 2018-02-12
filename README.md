@@ -19,7 +19,17 @@ Just install the .deb package and start the service.
 
 # Configuration
 
-For this moment there are no any configuration allowed, it will be as HTTP service at `localhost:8081`.
+The app reads settings from the URL or local file specified in the `SettingsUrl` environment variable.
+
+There are allowed settings:
+
+```
+NetworkType: String - "main" or "test"
+ServiceHost: String - ex. "localhost"
+ServicePort: Int - ex. 8080
+```
+
+By default it will be a HTTP service at `localhost:8080` for Waves Mainnet.
 
 # Todos
 
