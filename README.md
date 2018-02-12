@@ -26,10 +26,10 @@ There are allowed settings:
 ```
 NetworkType: String - "main" or "test"
 ServiceHost: String - ex. "localhost"
-ServicePort: Int - ex. 8080
+ServicePort: Int - ex. 8081
 ```
 
-By default it will be a HTTP service at `localhost:8080` for Waves Mainnet.
+By default it will be a HTTP service at `localhost:8081` for Waves Mainnet.
 
 # Todos
 
