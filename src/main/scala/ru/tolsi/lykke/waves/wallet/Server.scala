@@ -23,5 +23,5 @@ object Server extends HttpApp with LykkeApiServer with App {
     }
   }
 
-  Server.startServer("localhost", 8081)
+  Server.startServer(settings.ServiceHost, settings.ServicePort)
 }

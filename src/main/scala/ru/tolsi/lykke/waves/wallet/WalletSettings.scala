@@ -9,7 +9,7 @@ import ru.tolsi.lykke.common.NetworkType
 import scala.util.Try
 
 object WalletSettings extends StrictLogging {
-  val Default = WalletSettings(NetworkType.Main)
+  val Default = WalletSettings(NetworkType.Main, "localhost", 8081)
 
   implicit val WalletSettingsReader: Reads[WalletSettings] = Json.reads[WalletSettings]
 
@@ -24,4 +24,4 @@ object WalletSettings extends StrictLogging {
   }
 }
 
-case class WalletSettings(NetworkType: NetworkType)
+case class WalletSettings(NetworkType: NetworkType, ServiceHost: String, ServicePort: Int)
