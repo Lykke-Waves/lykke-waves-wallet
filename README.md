@@ -28,4 +28,4 @@ Due to the rather tight deadlines of the contest and lack of free time, the proj
 - [ ] Make the required logging format
 - [ ] Make the routes tests
 - [ ] Clean up the code
-- [ ] NetworkType (testnet) support
+- [x] NetworkType (testnet) support
