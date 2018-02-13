@@ -5,7 +5,7 @@ import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.server.Route
 import com.wavesplatform.wavesj.PrivateKeyAccount
 import de.heikoseeberger.akkahttpplayjson.PlayJsonSupport
-import play.api.libs.json.{Json, Reads, Writes}
+import play.api.libs.json._
 import ru.tolsi.lykke.common.http.{ErrorMessage, NetworkScheme}
 import ru.tolsi.lykke.common.{NetworkType, UnsignedTransferTransaction}
 
@@ -38,7 +38,9 @@ case class SignRoute(networkType: NetworkType) extends PlayJsonSupport with Netw
                 val pk = req.privateKeys.head
                 try {
                   val acc = PrivateKeyAccount.fromPrivateKey(pk, scheme)
-                  tx.signTransaction(acc).getJson
+                  Json.parse(tx.signTransaction(acc).getJson).as[JsObject] ++
+                    // adding transaction id field for opeprationId search
+                    JsObject(Map("id" -> JsString(tx.id(acc).id)))
                 } catch {
                   case NonFatal(e) =>
                     StatusCodes.BadRequest -> Json.toJson(ErrorMessage("Invalid private key", Some(Map("privateKeys" -> Seq(e.getMessage)))))
