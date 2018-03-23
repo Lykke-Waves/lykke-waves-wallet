@@ -7,7 +7,7 @@ import ru.tolsi.lykke.common.http.routes.IsAliveRoute
 import ru.tolsi.lykke.waves.wallet.routes.{SignRoute, WalletsRoute}
 
 object Server extends HttpApp with LykkeApiServer with App {
-  private val settingsUrl = Option(System.getProperty("SettingsUrl"))
+  private val settingsUrl = sys.env.get("SettingsUrl")
   private val settings = WalletSettings.loadSettings(settingsUrl)
 
   private val isAliveRoute = IsAliveRoute(ProjectInfo.NameString, ProjectInfo.VersionString,
