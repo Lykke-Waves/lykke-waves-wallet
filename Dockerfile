@@ -16,7 +16,7 @@ RUN git clone https://github.com/Lykke-Waves/lykke-waves-common.git \
 
 RUN git clone https://github.com/Lykke-Waves/lykke-waves-wallet.git \
     && cd lykke-waves-wallet \
-    && git checkout 7251b78 \
+    && git checkout 0.0.1 \
     && sbt clean assembly
 
 RUN mv `find /lykke-waves-wallet/target/scala-2.12 -name *.jar` /lykke-waves-wallet.jar && chmod -R 744 /lykke-waves-wallet.jar
