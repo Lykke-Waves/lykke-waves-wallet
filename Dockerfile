@@ -16,7 +16,7 @@ RUN git clone https://github.com/Lykke-Waves/lykke-waves-common.git \
 
 RUN git clone https://github.com/Lykke-Waves/lykke-waves-wallet.git \
     && cd lykke-waves-wallet \
-    && git checkout 463a554 \
+    && git checkout 7251b78 \
     && sbt clean assembly
 
 RUN mv `find /lykke-waves-wallet/target/scala-2.12 -name *.jar` /lykke-waves-wallet.jar && chmod -R 744 /lykke-waves-wallet.jar
@@ -31,4 +31,9 @@ EXPOSE 8081
 
 RUN useradd -s /bin/false lykke-waves-wallet
 USER lykke-waves-wallet
+
+COPY config-for-docker.json /app/config.json
+ENV ENV_INFO=dev
+ENV SettingsUrl=file:///app/config.json
+
 CMD ["/usr/bin/java", "-jar", "/app/lykke-waves-wallet.jar"]
