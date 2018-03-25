@@ -39,3 +39,12 @@ Due to the rather tight deadlines of the contest and lack of free time, the proj
 - [ ] Make the routes tests
 - [ ] Clean up the code
 - [x] NetworkType (testnet) support
+
+# Docker
+
+You can build and start the docker container using
+
+```
+docker build -t "lykke-waves-wallet-$(git describe --tags --always)" .
+docker run "lykke-waves-wallet-$(git describe --tags --always)"
+```
