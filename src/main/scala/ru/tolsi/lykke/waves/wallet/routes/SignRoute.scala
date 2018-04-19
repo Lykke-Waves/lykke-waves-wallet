@@ -3,6 +3,7 @@ package ru.tolsi.lykke.waves.wallet.routes
 import akka.http.scaladsl.model.StatusCodes
 import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.server.Route
+import com.typesafe.scalalogging.StrictLogging
 import com.wavesplatform.wavesj.PrivateKeyAccount
 import de.heikoseeberger.akkahttpplayjson.PlayJsonSupport
 import play.api.libs.json._
@@ -22,7 +23,7 @@ object SignRoute {
   implicit val ResponseWrites: Writes[ResponseObject] = Json.writes[ResponseObject]
 }
 
-case class SignRoute(networkType: NetworkType) extends PlayJsonSupport with NetworkScheme {
+case class SignRoute(networkType: NetworkType) extends PlayJsonSupport with NetworkScheme with StrictLogging {
 
   import SignRoute._
 
@@ -43,9 +44,11 @@ case class SignRoute(networkType: NetworkType) extends PlayJsonSupport with Netw
                     JsObject(Map("id" -> JsString(tx.id(acc).id)))
                 } catch {
                   case NonFatal(e) =>
+                    logger.error("Error on signing", e)
                     StatusCodes.BadRequest -> Json.toJson(ErrorMessage("Invalid private key", Some(Map("privateKeys" -> Seq(e.getMessage)))))
                 }
               case Failure(f) =>
+                logger.error("Error on parsing tx context", f)
                 StatusCodes.BadRequest -> Json.toJson(ErrorMessage("Can't parse transaction context", Some(Map("transactionContext" -> Seq(f.getMessage)))))
             }
           }
