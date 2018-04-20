@@ -39,9 +39,10 @@ case class SignRoute(networkType: NetworkType) extends PlayJsonSupport with Netw
                 val pk = req.privateKeys.head
                 try {
                   val acc = PrivateKeyAccount.fromPrivateKey(pk, scheme)
-                  Json.parse(tx.signTransaction(acc).getJson).as[JsObject] ++
-                    // adding transaction id field for opeprationId search
+                  val js = Json.parse(tx.signTransaction(acc).getJson).as[JsObject] ++
+                    // adding transaction id field for operationId search
                     JsObject(Map("id" -> JsString(tx.id(acc).id)))
+                  ResponseObject(js.toString())
                 } catch {
                   case NonFatal(e) =>
                     logger.error("Error on signing", e)
