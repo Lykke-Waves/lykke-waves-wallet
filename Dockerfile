@@ -11,12 +11,12 @@ ENV PATH="/usr/local/sbt/bin:${PATH}"
 
 RUN git clone https://github.com/Lykke-Waves/lykke-waves-common.git \
     && cd lykke-waves-common \
-    && git checkout 0.0.11 \
+    && git checkout 0.0.12 \
     && sbt clean publishLocal
 
 RUN git clone https://github.com/Lykke-Waves/lykke-waves-wallet.git \
     && cd lykke-waves-wallet \
-    && git checkout 0.0.6 \
+    && git checkout 0.0.7 \
     && sbt clean assembly
 
 RUN mv `find /lykke-waves-wallet/target/scala-2.12 -name *.jar` /lykke-waves-wallet.jar && chmod -R 744 /lykke-waves-wallet.jar
